@@ -1,0 +1,81 @@
+function factorial(arr,anount){
+	
+	for (var i  = 0; i < arr.length; i++) {
+		 arr[i]+=anount
+	}
+
+}
+var arr1=[1,2,3,4]
+
+
+
+factorial(arr1,5)
+console.log(arr1)
+function fact(num){
+	if(num == 1){
+		return num
+	}else{
+		re turn num*fact(num-1)
+	}
+}
+console.log(fact(5))
+function Check(amount){
+	this.bablance =amount
+	this.deposit =deposit
+	this.withdraw = withdraw
+	this.toString =toString
+}
+function deposit(amount){
+	this.bablance += amount
+	console.log(this.bablance)
+}
+function withdraw(amount){
+	if(amount<=this.bablance){
+		this.bablance -=amount
+	} 
+	if(amount>this.bablance){
+		console.log('insufficient')
+	}
+}
+function toString(){
+	return(this.bablance)
+}
+var account = new Check(500)
+  account.deposit(1000)
+  console.log(account.toString())
+  account.withdraw(750)
+  console.log(account.toString())
+  account.withdraw(800)
+  console.log(account.toString())
+var nums = []
+for(var i = 0;i<100;i++){
+	nums[i]=i+1
+}
+var sum = 0
+console.log(nums)
+for(i=0;i<nums.length;i++){
+	sum +=nums[i]
+}
+console.log(sum)
+var sentence = 'the hhh hh kk kk kkss   ss'
+var words = sentence.split(' ')
+console.log(words)
+
+for(i=0;i<words.length;i++){
+ 	console.log(words[i])
+ }
+ var newwords=words
+ console.log(newwords)
+ words[0]= 400
+ console.log(newwords)
+
+
+ 
+ a={1:"2",2:'3'}
+ console.log(a)
+ b=a
+
+ console.log(b)
+ a[1]='4'
+ console.log(a)
+  console.log(b)
