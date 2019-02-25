@@ -1,0 +1,12 @@
+var names = ['dsd','sds','dasd','asdas','aaaaa']
+var name = 'aaaaa'
+var position = names.indexOf(name)
+if(position >=0){
+	console.log(name+position)
+}
+else{
+	console.log(name+'not fand')
+}
+var abc = names.splice(4,1)
+console.log(abc)
+console.log(names)
