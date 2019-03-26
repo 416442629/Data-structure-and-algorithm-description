@@ -76,7 +76,7 @@ distribute(nums,queues,10,1)
 console.log('queues:------------------1')
 //console.log(queues)
 console.log('queues:------------------2')
-collect(queues,nums)//nums 按照个位数  从小到大排列
+collect(queues,nums)//nums 只能先个位  后十位
 // console.log(queues)
 console.log(nums)
 console.log('queues:------------------3')
