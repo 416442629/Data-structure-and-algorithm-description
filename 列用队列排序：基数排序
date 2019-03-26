@@ -1,0 +1,89 @@
+var fs = require("fs")
+function Queue(){
+	this.dataStore = []
+	this.enqueue =enqueue
+	this.dequeue =dequeue
+	this.front = front
+	this.back =back 
+	this.toString=toString
+	this.empty=empty
+}
+function enqueue(element){
+	this.dataStore.push(element)
+}
+function dequeue(element){
+	return this.dataStore.shift()
+}
+
+function front(){
+	return this.dataStore[0]
+}
+function back(){
+	return this.dataStore[this.dataStore.length-1]
+}
+function toString(){
+	var retStr =''
+	for(var i = 0;i<this.dataStore.length;++i){
+		retStr += this.dataStore[i] +'\n'
+	}
+	return retStr
+}
+function empty(){
+	if(this.dataStore.length==0){
+		return true
+	}else{
+		return false
+	}
+}
+var queues = []
+for (var i = 0;i<10;++i){
+	queues[i] = new Queue()
+}
+console.log('queues:')
+console.log(queues)
+var nums =[]
+for(var i = 0;i<10;++i){
+	nums[i]=Math.floor(Math.floor(Math.random()*101))
+
+}
+console.log('nums:')
+console.log(nums)
+function distribute(nums,queues,n,digit){
+	
+	for(var i = 0;i<n;++i){
+		if(digit==1){
+
+		queues[nums[i]%10].enqueue(nums[i])
+		}
+		else if(digit==10){
+			queues[Math.floor(nums[i]/10)].enqueue(nums[i])
+		}else{
+			console.log('cuowu ')
+		}
+}
+}
+function collect(queues,nums){
+	var i =0
+	for(var j = 0;j<10;++j){
+		while(!queues[j].empty()){
+			nums[i]=queues[j].dequeue()
+			++i
+		}
+	}
+}
+distribute(nums,queues,10,1)
+
+console.log('queues:------------------1')
+//console.log(queues)
+console.log('queues:------------------2')
+collect(queues,nums)//nums 按照个位数  从小到大排列
+// console.log(queues)
+console.log(nums)
+console.log('queues:------------------3')
+
+distribute(nums,queues,10,10)
+// console.log(queues)
+console.log('queues:------------------4')
+collect(queues,nums)
+// console.log(queues)
+console.log(nums)
