@@ -85,5 +85,5 @@ distribute(nums,queues,10,10)
 // console.log(queues)
 console.log('queues:------------------4')
 collect(queues,nums)
-// console.log(queues)
+// console.log(queues)//个人思考：只能先低位数后高位数：为什么呢？因为每次排序都要变换位置
 console.log(nums)
