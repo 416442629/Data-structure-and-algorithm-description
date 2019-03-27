@@ -1,0 +1,84 @@
+var fs = require("fs")
+function Queue(){
+	this.dataStore = []
+	this.enqueue =enqueue
+	this.dequeue =dequeue
+	this.front = front
+	this.back =back 
+	this.toString=toString
+	this.empty=empty
+}
+function enqueue(element){
+	this.dataStore.push(element)
+}
+function dequeue(element){
+	//return this.dataStore.shift()
+	var entry = 0
+	for (var i = 0;i<this.dataStore.length;++i){
+		if(this.dataStore[i].code<this.dataStore[entry].code){
+			entry = i
+		}
+	}
+	return this.dataStore.splice(entry,1)
+}
+
+function front(){
+	return this.dataStore[0]
+}
+function back(){
+	return this.dataStore[this.dataStore.length-1]
+}
+function toString(){
+	var retStr =''
+	for(var i = 0;i<this.dataStore.length;++i){
+		retStr += this.dataStore[i] +'\n'
+	}
+	return retStr
+}
+function empty(){
+	if(this.dataStore.length==0){
+		return true
+	}else{
+		return false
+	}
+}
+
+function Patient(name,code){
+	this.name=name
+	this.code=code
+}
+var p = new Patient('sdasd',5)
+var ed = new Queue()
+ed.enqueue(p)
+p = new Patient('ddda',4)
+ed.enqueue(p)
+p = new Patient('ff',7)
+ed.enqueue(p)
+p = new Patient('gf',1)
+ed.enqueue(p)
+p = new Patient('sgf',7)
+ed.enqueue(p)
+console.log(ed.dataStore)
+console.log('-----------------------kaishi le ')
+var seen = ed.dequeue()
+console.log(seen)
+console.log(ed.dataStore)
+
+console.log('-----------------------2')
+
+
+var seen = ed.dequeue()
+console.log(seen)
+
+
+console.log(ed.dataStore)
+var seen = ed.dequeue()
+console.log('-----------------------3')
+console.log(seen)
+
+console.log(ed.dataStore)
+
+
+
+
+
