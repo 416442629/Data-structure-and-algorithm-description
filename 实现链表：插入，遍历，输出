@@ -1,0 +1,63 @@
+
+function Node(element){
+	this.element=element 
+	this.next = null 
+}
+
+function LList(){
+	this.head =new Node('head')//传入的是'head'时候this.head =new Node('head'){element: 'head',next:null} 是个对象
+
+	this.find =find 
+	this.insert =insert
+	this.remove = remove 
+	this.display =display
+
+}
+function find(item){ //获得对象的next值
+	var currNode = this.head 
+	//console.log(currNode)
+	while(currNode.element != item){
+		console.log(currNode)
+		currNode = currNode.next //获得对象的next值
+
+	}
+	return currNode            	 //返回的是对象
+}
+function insert(newElement,item){
+	var newNode = new Node(newElement)
+	var current = this.find(item)	
+	newNode.next = current.next 	
+	current.next =newNode
+}
+function display(){
+	var currNode = this.head
+	// console.log(currNode.next.element)
+	// 	console.log(currNode.next)
+	// 	console.log("-----------------")
+	while(currNode.next != null){
+		console.log(currNode.next.element)
+		// console.log("-----------------")
+		// console.log(currNode.next)
+		currNode =currNode.next
+	}
+}
+
+function remove(){
+
+}
+var cities = new LList()
+cities.insert('dddd','head')
+console.log("-----------------")
+cities.insert('cccc','dddd')
+console.log("-----------------")
+cities.insert('vvvv','cccc')
+console.log("-----------------")
+cities.insert('ffff','vvvv')
+ cities.insert('eeee','vvvv')
+console.log("-----------------")
+// cities.display()
+// console.log(cities)
+// console.log('----------')
+// console.log(cities.head)
+ console.log("-----------------")
+ cities.display()
