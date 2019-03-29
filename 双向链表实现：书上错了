@@ -1,0 +1,162 @@
+
+function Node(element){
+	this.element=element 
+	this.next = null 
+	this.previous= null
+}
+
+function LList(){
+	this.head =new Node('head')//传入的是'head'时候this.head =new Node('head'){element: 'head',next:null} 是个对象
+    this.tail =new Node('tail')
+	this.find =find 
+	this.insert =insert
+	this.findPrevious=findPrevious
+	this.remove = remove 
+	this.display =display
+	// this.findLast=findLast
+	this.dispReverse=dispReverse
+
+}
+function find(item){ //获得对象的next值
+	var currNode = this.head 
+	//console.log(currNode)
+	while(currNode.element != item){
+		//console.log(currNode)
+		currNode = currNode.next //获得对象的next值
+	}
+	return currNode            	 //返回的是对象
+}
+function insert(newElement,item){
+	var newNode = new Node(newElement)
+	var current = this.find(item)	
+	// newNode.next = current.next 
+	if(current.next==null){
+			current.next=this.tail
+
+	}
+	current.next.previous =newNode
+	newNode.next = current.next
+	 // current.next =newNode
+	
+	newNode.previous=current
+	current.next =newNode
+}
+
+ // newNode.next = current.next;
+ //    newNode.previous = current;//双向链表在这里需要设置新节点previous属性
+ //    current.next = newNode;
+
+
+function display(){
+	var currNode = this.head
+	// console.log(currNode.next.element)
+	// 	console.log(currNode.next)
+	// 	console.log("-----------------")
+
+	while(currNode.next != null && currNode.next != this.tail){
+		console.log(currNode.next.element)
+		//  console.log("-----------------")
+		 // console.log(currNode.next)
+		currNode =currNode.next
+	}
+}
+// function display() {
+//     var currNode = this.head;
+//     var nodestr = "";
+//     while (!(currNode.next == null)) {
+//         nodestr += " "+currNode.next.element;
+//         currNode = currNode.next;
+//     }
+//     console.log(nodestr);
+// }
+function findPrevious(item)
+{
+	var currNode = this.head 
+	
+	while((currNode.next!= null)&&currNode.next.element != item){//这个currNode.next.element != item是关键
+		//console.log(currNode)
+		currNode = currNode.next 
+
+	}
+	return currNode//返回的是被删除的前一个节点
+}
+function remove(item){
+//var preNode = this.findPrevious(item)
+var currNode = this.find(item)
+
+ if(!(currNode.next==null)){
+ //	preNode.next=preNode.next.next
+ 	currNode.previous.next=currNode.next
+ 	currNode.next.previous =currNode.previous
+ 	currNode.next=null 
+ 	currNode.previous=null 
+ }
+
+
+}
+// function findLast(){
+// 	var currNode = this.head 
+// 	while(!(currNode.next==null)){
+// 		currNode =currNode.next
+// 	}
+// 	return currNode
+// }
+function dispReverse(){
+	var currNode = this.tail 
+	// currNode = this.findLast()
+	// while(currNode.previous!=null){
+	// 	console.log(currNode.element)
+	// 	currNode=currNode.previous
+	// }
+	while(currNode.previous != null && currNode.previous != this.head){
+		console.log(currNode.previous.element)
+		//  console.log("-----------------")
+		 // console.log(currNode.next)
+		currNode =currNode.previous
+	}
+}
+// function dispReverse() {
+//     var currNode = this.head;
+//     currNode = this.findLast();
+//     var nodestr = "";
+//     while (!(currNode.previous == null)) {
+//         nodestr += " "+currNode.element;
+//         currNode = currNode.previous;
+//     }
+//     console.log("将链表反转后： "+nodestr);
+// }
+
+// function remove(item) {
+//     var currNode = this.find(item);
+//     if (!(currNode.next == null)) {
+//         currNode.previous.next = currNode.next;
+//         currNode.next.previous = currNode.previous;
+//         currNode.next = null;
+//         currNode.previous = null;
+//     }
+// }
+
+
+var cities = new LList()
+cities.insert('dddd','head')
+console.log("-----------------")
+cities.insert('cccc','dddd')
+console.log("-----------------")
+cities.insert('vvvv','cccc')
+console.log("-----------------")
+cities.insert('ffff','vvvv')
+cities.insert('eeee','vvvv')
+console.log("-----------------")
+// cities.display()
+// console.log(cities)
+// console.log('----------')
+// console.log(cities.head)
+ console.log("-----------------")
+
+ cities.display()
+// cities.remove('eeee')
+   console.log("-----------------")
+  cities.dispReverse()
+   console.log("-----------------")
+
+  // cities.display()
