@@ -1,0 +1,53 @@
+function Dictionary(){
+	this.dataStore = []
+	this.add=add 
+	this.find=find 
+	this.remove=remove 
+	this.showAll=showAll 
+	this.count =count
+	this.clear =clear
+}
+function count(){
+	 var n = 0 
+    for ( var key in this.dataStore ){
+        ++n
+    }
+    return n
+}
+function add(key,value){
+	this.dataStore[key] = value
+}
+function find(key){
+	return this.dataStore[key]
+}
+function remove(key){
+	  if( this.dataStore[key] ) {
+	  	delete this.dataStore[key]}
+    else return 'Not Found';
+}
+function showAll(){
+	Object.keys(this.dataStore).forEach(function(key){
+		console.log(key+'->'+this.dataStore[key])
+	},this) //比for in  多了一次排序功能进行 Object.keys().sort()排序后，返回的是新的一个数组
+	for( var key in this.dataStore ){
+        console.log( key + '->' + this.dataStore[key] );
+    }
+}
+function clear(){
+    for( var key in this.dataStore ){
+        delete this.dataStore[key];
+    }
+}
+var pbook = new Dictionary()
+pbook.add('mike','123')
+pbook.add('david','235')
+pbook.showAll()
+console.log(pbook.find('mike'))
+
+console.log(pbook.count())
+// pbook.remove('mike')
+console.log('-------------------------')
+
+// pbook.showAll()
+pbook.clear()
+pbook.showAll()
