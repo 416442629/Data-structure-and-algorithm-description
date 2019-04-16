@@ -1,0 +1,82 @@
+function HashTable(){
+	this.table = new Array(137)
+	//this.simpleHash=simpleHash 
+	this.showDistro=showDistro 
+	this.put=put 
+	this.betterHash=betterHash 
+	this.getRandomInt = getRandomInt 
+	this.genStuData=genStuData
+	this.get = get
+}
+
+function genStuData(arr){
+	for (var i =0;i<arr.length;++i){
+		var num = ''
+		for(var j = 1;j<=9;++j){
+			num +=Math.floor(Math.random()*10)
+
+		}
+		num+=getRandomInt(50,100)
+		arr[i] = num
+	}
+}
+function getRandomInt(min,max){
+		//return Math.floor(Math.random()*(max-min+1))+min
+	}
+	function getSunData(arr){
+		for(var i =0;i<arr.length;++i){
+			var num=''
+			for(var j=1;j<=9;++j){
+				num+=Math.floor(Math.random()*10)
+			}
+			arr[i] =num
+		}
+	}
+function betterHash(data){//乘以质数解决散列碰撞
+	var total = 0
+	const H = 37
+	for(var i = 0;i<data.length;++i){
+		total+=H*total+data.charCodeAt(i)
+	}
+
+	// console.log('数据哈希之前：'+data+'数据哈希之后：'+total+'数据哈希取余之后：'+total % this.table.length) 
+	total =total % this.table.length
+	if(total<0){
+	total +=this.table.length-1
+	}
+	return parseInt(total)
+
+}
+function put(key,data){
+	var pos = this.betterHash(key)
+	this.table[pos] = data 
+}
+function showDistro(){
+	var n = 0 
+	for (var i=0;i<this.table.length;++i){
+		if(this.table[i]!=undefined){
+			console.log(i+':'+this.table[i])
+		}
+		
+	}
+}
+function get(key){
+	return this.table[this.betterHash(key)]
+}
+
+
+
+var pnumbers =  new HashTable()
+var name='zzz'
+var number=13845748464
+var name1='zzz1'
+var number1=138457484642
+var name2='zzz2'
+var number2=138457484643
+pnumbers.put(name,number)
+pnumbers.put(name1,number1)
+pnumbers.put(name2,number2)
+
+console.log(pnumbers.get('zzz'))
+console.log(pnumbers.get('zzz1'))
+console.log(pnumbers.get('zzz2'))
